@@ -940,7 +940,7 @@ app.get(
 
 const credentials = {
   key: key,
-  cred: cert,
+  cert: cert,
 };
 
 app.listen(port, () => {
