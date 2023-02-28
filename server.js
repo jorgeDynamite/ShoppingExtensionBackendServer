@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 var axios = require("axios").default;
 const express = require("express");
+const fs = require("fs");
 const cors = require("cors");
 API_KEY = "a69a29600548ceab5d864959e44ed285";
 const request = require("request-promise");
@@ -16,6 +17,8 @@ const Timeout = (time) => {
   return controller;
 };
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const file = fs.readFileSync("./B8ABD802C5508800FEFDD7551178C499.txt");
 
 function createEbayAffiliate(url) {
   const ALink =
@@ -923,6 +926,15 @@ app.get("/searchByTitle/aliexpress/", async (req, res) => {
   console.log("Finished Title Aliexpress");
   return res.status(200).send({ results: Results });
 });
+
+app.get(
+  "/.well-known/pki-validation/B8ABD802C5508800FEFDD7551178C499.txt",
+  (req, res) => {
+    res.sendFile(
+      "/Users/georgetobieson/ChromeExtensions/ShoppingExtensionBackendServer/B8ABD802C5508800FEFDD7551178C499.txt"
+    );
+  }
+);
 
 app.listen(port, () => {
   console.log("listening to port" + port.toString());
