@@ -931,7 +931,7 @@ app.get(
   "/.well-known/pki-validation/B8ABD802C5508800FEFDD7551178C499.txt",
   (req, res) => {
     res.sendFile(
-      "/Users/georgetobieson/ChromeExtensions/ShoppingExtensionBackendServer/B8ABD802C5508800FEFDD7551178C499.txt"
+      "/home/ec2-user/ShoppingExtensionBackendServer/B8ABD802C5508800FEFDD7551178C499.txt"
     );
   }
 );
