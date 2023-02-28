@@ -11,6 +11,7 @@ app.use(cors({ origin: true }));
 const cheerio = require("cheerio");
 const amazonSearch = "site:amazon.com";
 const HttpsProxyAgent = require("https-proxy-agent");
+const https = require("https");
 const Timeout = (time) => {
   let controller = new AbortController();
   setTimeout(() => controller.abort(), time * 1000);
@@ -18,7 +19,8 @@ const Timeout = (time) => {
 };
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const file = fs.readFileSync("./B8ABD802C5508800FEFDD7551178C499.txt");
+const key = fs.readFileSync("private.key");
+const cert = fs.readFileSync("certificate.crt");
 
 function createEbayAffiliate(url) {
   const ALink =
@@ -936,6 +938,13 @@ app.get(
   }
 );
 
+const credentials = {
+  key: key,
+  cred: cred,
+};
+
 app.listen(port, () => {
   console.log("listening to port" + port.toString());
 });
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(8443);
