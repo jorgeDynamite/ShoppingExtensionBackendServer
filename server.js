@@ -19,8 +19,12 @@ const Timeout = (time) => {
 };
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const key = fs.readFileSync("private.key");
-const cert = fs.readFileSync("certificate.crt");
+const key = fs.readFileSync(
+  "/home/ec2-user/ShoppingExtensionBackendServer/private.key"
+);
+const cert = fs.readFileSync(
+  "/home/ec2-user/ShoppingExtensionBackendServer/certificate.crt"
+);
 
 function createEbayAffiliate(url) {
   const ALink =
