@@ -782,7 +782,7 @@ app.get("/searchByTitle/google/", async (req, res) => {
     try {
       title = titleSmaler(req.query.title, 0);
       Results = await SearchGoogle_.searchGoogle(title, {
-        use: true,
+        use: false,
         countrycode: countrycode,
       });
       var endTime = performance.now();
@@ -818,7 +818,7 @@ app.get("/searchByTitle/amazon/", async (req, res) => {
     console.log(title);
     try {
       Results = await Amazon_.search(title, {
-        use: true,
+        use: false,
         countrycode: countrycode,
       });
       var endTime = performance.now();
@@ -846,7 +846,7 @@ app.get("/affilite/aliexpress/", async (req, res) => {
   var linkParam =
     "https://www.aliexpress.com/item/4000233378302.html?gatewayAdapt=4itemAdapt";
   var ALink;
-  const iproyal = true;
+  const iproyal = false;
   var startTime = performance.now();
 
   try {
