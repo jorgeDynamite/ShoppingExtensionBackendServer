@@ -5,7 +5,7 @@ const fs = require("fs");
 const cors = require("cors");
 API_KEY = "a69a29600548ceab5d864959e44ed285";
 const request = require("request-promise");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 const app = express();
 app.use(cors({ origin: true }));
 const cheerio = require("cheerio");
@@ -933,14 +933,9 @@ app.get("/searchByTitle/aliexpress/", async (req, res) => {
   return res.status(200).send({ results: Results });
 });
 
-app.get(
-  "/.well-known/pki-validation/B8ABD802C5508800FEFDD7551178C499.txt",
-  (req, res) => {
-    res.sendFile(
-      "/home/ec2-user/ShoppingExtensionBackendServer/B8ABD802C5508800FEFDD7551178C499.txt"
-    );
-  }
-);
+app.get("/test/", (req, res) => {
+  res.send("I am working");
+});
 
 const credentials = {
   key: key,
@@ -951,4 +946,4 @@ app.listen(port, () => {
   console.log("listening to port" + port.toString());
 });
 const httpsServer = https.createServer(credentials, app);
-httpsServer.listen(8343);
+httpsServer.listen(8443);
