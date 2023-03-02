@@ -782,7 +782,7 @@ app.get("/searchByTitle/google/", async (req, res) => {
     try {
       title = titleSmaler(req.query.title, 0);
       Results = await SearchGoogle_.searchGoogle(title, {
-        use: false,
+        use: true,
         countrycode: countrycode,
       });
       var endTime = performance.now();
@@ -818,7 +818,7 @@ app.get("/searchByTitle/amazon/", async (req, res) => {
     console.log(title);
     try {
       Results = await Amazon_.search(title, {
-        use: false,
+        use: true,
         countrycode: countrycode,
       });
       var endTime = performance.now();
